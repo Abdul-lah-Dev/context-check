@@ -29,15 +29,26 @@ def check_tiers(tokens):
     return results
 
 
-text = input("Paste some text: ")
-tokens = estimate_tokens(text)
+def load_text(path):
+    """Read a text file and return everything in it as one string."""
+    with open(path, "r", encoding="utf-8") as file:
+        return file.read()
 
-print(f"Characters: {len(text)}")
-print(f"Words: {len(text.split())}")
-print(f"Estimated tokens: {tokens}")
-print(f"Estimated cost: ${estimate_cost(tokens):.6f}")
-for tier, fits in check_tiers(tokens).items():
-    if fits:
-        print(f"  {tier}: fits")
-    else:
-        print(f"  {tier}: TOO BIG")
+
+def main():
+    path = input("Document to check: ").strip()
+    text = load_text(path)
+    tokens = estimate_tokens(text)
+
+    print(f"Characters: {len(text):,}")
+    print(f"Words: {len(text.split()):,}")
+    print(f"Estimated tokens: {tokens:,}")
+    print(f"Estimated cost: ${estimate_cost(tokens):.4f}")
+    for tier, fits in check_tiers(tokens).items():
+        if fits:
+            print(f"  {tier}: fits")
+        else:
+            print(f"  {tier}: TOO BIG")
+
+
+main()
