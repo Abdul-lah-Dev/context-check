@@ -37,7 +37,19 @@ def load_text(path):
 
 def main():
     path = input("Document to check: ").strip()
-    text = load_text(path)
+    try:
+        text = load_text(path)
+    except FileNotFoundError:
+        print(f"Could not find {path}. Check the name and the folder you are in.")
+        return
+    except UnicodeDecodeError:
+        print(f"{path} doesn't look like a plain text file.")
+        return
+
+    if not text.strip():
+        print(f"{path} is empty. There is nothing to check.")
+        return
+
     tokens = estimate_tokens(text)
 
     print(f"Characters: {len(text):,}")
