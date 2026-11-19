@@ -1,24 +1,32 @@
-# Context Check
+# Context Check Lab (v0.2)
 
-A small command-line tool that estimates whether a document will fit into an AI model, and roughly what it would cost to process.
+A command-line Python utility that reads a plain text document, estimates its character count, word count, token count, and processing cost, and checks whether it fits inside common AI model context windows.
 
-> Week 01 project — version 0.2
+## Features
 
-## Usage
+* Reads plain text files with UTF-8 encoding
+* Estimates tokens using a 4-characters-per-token rule of thumb (minimum 1 token)
+* Calculates estimated input cost per 1 million tokens
+* Evaluates compatibility across four model context tiers (`Small (8K)`, `Standard (128K)`, `Large (200K)`, and `Extra-large (1M)`)
+* Handles missing files, non-text files, and empty files with clear messages instead of crashing
 
-```bash
-python main.py
-```
+## Setup & Usage
 
-Type the name of a plain text file (for example `sample.txt`) when asked. The program prints:
+1. Navigate to the project folder in Git Bash:
+   `cd "/d/AI Solutions Engineering/Session 2/context-check-lab"`
 
-- the number of characters and words
-- the estimated number of tokens and the estimated cost
-- whether the document fits into four model context sizes: 8K, 128K, 200K and 1M tokens
+2. Create and activate a virtual environment:
+   `python -m venv venv`
+   `source venv/Scripts/activate`
 
-If the file can't be found, or isn't a plain text file, it prints a friendly message instead of crashing.
+3. Add text to `sample.txt`, then run the program:
+   `python main.py`
 
-## Notes
+4. Enter the file name when prompted (for example, `sample.txt`).
 
-- Tokens are estimated with a rule of thumb (about 4 characters per token for English text).
-- The price per million tokens and the context sizes are illustrative, not real model figures.
+## Project Files
+
+* `main.py` — Token estimation, cost calculation, tier checking, file loading, error handling, and CLI entry point
+* `sample.txt` — Sample plain text document for testing
+* `.gitignore` — Excludes virtual environments and temporary/cache files from Git
+* `README.md` — Project overview and usage instructions

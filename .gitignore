@@ -1,5 +1,19 @@
+# Virtual environments
 venv/
+venv_*/
+.venv/
+
+# Python cache files
 __pycache__/
-.env
+*.py[cod]
+*$py.class
+
+# Temporary test files from the lab
+big.txt
+summary.txt
+empty.txt
+
+# Editor & OS files
+.vscode/
 .DS_Store
-report.json
+Thumbs.db
