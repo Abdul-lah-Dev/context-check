@@ -52,3 +52,10 @@ languages (such as Urdu) and code usually use more tokens.
 -Count tokens exactly with a real tokenizer.
 -Support PDF and Word documents.
 -Send the document to an AI model and get a summary (Week 2).
+
+
+## What I learned about tokens
+A one-page policy is only about 600 tokens, so it fits every model. A short novel
+like Alice in Wonderland is too big for an 8K model but fits easily in 128K. What
+surprised me is that Pride and Prejudice doesn't even fit in 128K: a whole book
+needs one of the largest models, or has to be split into parts.
